@@ -12,6 +12,9 @@ app.factory('Post', function ($firebase, FIREBASE_URL) {
         return postRef;
       });
   	},
+    comments: function(postId) {
+      return $firebase(ref.child('comments').child(postId)).$asArray();
+    },
   	get: function (postId) {
   	  return $firebase(ref.child('posts').child(postId)).$asObject();
   	},
