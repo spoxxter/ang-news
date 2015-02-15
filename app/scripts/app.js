@@ -24,14 +24,33 @@ var app = angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/posts.html',
-        controller: 'PostsCtrl'
+        controller: 'PostsCtrl', 
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
+      })
+      .when('/posts', {
+        templateUrl: 'views/posts.html', 
+        controller: 'PostsCtrl', 
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
       })
       .when('/posts/:postId', {
         templateUrl: 'views/showpost.html',
-        controller: 'PostViewCtrl'
+        controller: 'PostViewCtrl', 
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
       })
       .when('/register', {
-        templateURL: 'views/register.html', 
+        templateUrl: 'views/register.html', 
         controller: 'AuthCtrl',
         resolve: {
           user: function(Auth) {

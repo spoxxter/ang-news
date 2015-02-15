@@ -15,6 +15,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
       };
 
       var profileRef = $firebase(ref.child('profile'));
+      
       return profileRef.$set(user.uid, profile);
 		},
 		login: function (user) {
